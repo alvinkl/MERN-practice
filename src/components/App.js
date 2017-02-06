@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
-import Nav from './Nav';
 import Footer from './Footer';
-import Home from './Home';
 
 export default class App extends Component {
   
@@ -13,8 +12,28 @@ export default class App extends Component {
   render() {
     return (
       <div className="container">  
-        <Nav />
-        <Home />
+        <nav className="navbar navbar-default">
+          <div className="container-fluid">
+            <div className="navbar-header">
+              <a className="navbar-brand" href="#">fcc-voting</a>
+            </div>
+            <ul className="nav navbar-nav navbar-right">
+              <li><Link to="/">Home</Link></li>
+              <li><a href="#">My Polls</a></li>
+              <li><Link to="newPoll">New Poll</Link></li>
+              <li className="dropdown">
+                <a className="dropdown-toggle" data-toggle="dropdown" href="#">User
+                <span className="caret"></span></a>
+                <ul className="dropdown-menu">
+                  <li><a href="#" className="btn btn-default">Sign out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div className='jumbotron'>
+          { this.props.children }
+        </div>
         <Footer />
       </div>
     )

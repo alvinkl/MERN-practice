@@ -3,7 +3,6 @@ const router = express.Router();
 
 const Poll = require('./model/Poll');
 
-
 router.route('/')
   .get((req, res, next) => {
     Poll.find((err, polls) => {
@@ -20,8 +19,8 @@ router.route('/')
     poll.save(err => {
       if (err) res.send(err);
       res.json({ message: 'Data saved' });
+      res.redirect("index");
     });
   })
-
 
 module.exports = router;
