@@ -1,7 +1,7 @@
 //data.js
 const data = [
-  { id: 1, author: 'Bryan', text: 'Wow this is neat!'},
-  { id: 2, author: 'You', text: 'youre __right!__'}
+  { id: 1, user: 'Bryan', polls: [{ polling: 'pol1', count: 5 }]},
+  { id: 1, user: 'Test', polls: [{ polling: 'pol2', count: 2 }]}
 ]
 
 module.exports = data;

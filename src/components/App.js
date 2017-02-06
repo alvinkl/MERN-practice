@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+
 import Nav from './Nav';
 import Footer from './Footer';
+import Home from './Home';
 
 export default class App extends Component {
   
@@ -12,6 +14,7 @@ export default class App extends Component {
     return (
       <div className="container">  
         <Nav />
+        <Home />
         <Footer />
       </div>
     )
