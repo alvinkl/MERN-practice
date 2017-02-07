@@ -3,13 +3,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const { PollsSchema } = require('./Polls');
+
 const PollSchema = new Schema({
   user: String,
   title: String,
-  polls: [{
-    polling: String,
-    count: Number
-  }]
+  polls: [PollsSchema]
 });
 
 module.exports = mongoose.model('Poll', PollSchema);
