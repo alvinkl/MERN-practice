@@ -19,7 +19,7 @@ export default class App extends Component {
             </div>
             <ul className="nav navbar-nav navbar-right">
               <li><Link to="/">Home</Link></li>
-              <li><a href="#">My Polls</a></li>
+              <li><Link to="pollPage">My Polls</Link></li>
               <li><Link to="newPoll">New Poll</Link></li>
               <li className="dropdown">
                 <a className="dropdown-toggle" data-toggle="dropdown" href="#">User

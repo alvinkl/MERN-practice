@@ -15,26 +15,37 @@ router.route('/')
     var poll = new Poll();
 
     var listPolls = [];    
-    var reqPolls = JSON.parse(req.body.polls);
-
-    reqPolls.map((item) => {
-      let polls = new Polls();
-      polls.polling = item.polling;
-      polls.count = item.count;
-      
-      poll.save(err => {
-        if (err) return res.send(err);
-      }).then(listPolls.push(polls));
-    });
-
+    
     poll.user = req.body.user;
     poll.title = req.body.title;
-    poll.polls = listPolls;
+    
+    var promises = req.body.polls.map((item) => {
+      return new Promise((resolve, reject) => {
+        let polls = new Polls();
+        polls.polling = item;
+        polls.count = 0;
+        
+        polls.save(err => {
+          if (err) return res.send(err);
+        })
+        listPolls.push(polls);
+        console.log(polls);
 
-    poll.save(err => {
-      if (err) return res.send(err);
-      res.json({ message: 'Data saved' });
+        resolve();
+      })
     });
+    
+    Promise.all(promises)
+      .then(() => {
+        poll.polls = listPolls;
+
+        poll.save(err => {
+          if (err) return res.send(err);
+          res.json({ message: 'Data saved' });
+        });
+        console.log(listPolls)
+      })
+      .catch(console.error);
 
   })
 
