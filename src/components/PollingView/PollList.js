@@ -22,8 +22,7 @@ export default class PollList extends Component {
 
   componentDidMount() {
     this.loadPollsFromServer();
-    this.state._loadData = setInterval(this.loadPollsFromServer, this.props.pollInterval);
-
+    // this.state._loadData = setInterval(this.loadPollsFromServer, this.props.pollInterval);
   }
 
   componentWillUnMount() {
@@ -32,7 +31,7 @@ export default class PollList extends Component {
 
   render() {
     let polling = this.state.data.map(item => {
-      return ( <a className='btn-block' href=""><li key={ item._id } className="list-group-item text-center">{ item.title }</li></a> );
+      return ( <a key={ item._id } className='btn-block' href=""><li key={ item._id } className="list-group-item text-center">{ item.title }</li></a> );
     });
 
     return (
