@@ -12,9 +12,7 @@ ReactDOM.render(
     <Route path='/' component={ App } >
       <IndexRoute component={ Poll }></IndexRoute>
       <Route path='newPoll' component={ NewPoll }></Route>
-      <Route path='pollPage' component={ PollPage }>
-        <Route path='/pollPage/:poll' component={ PollPage }></Route>
-      </Route>
+      <Route path='pollPage/:pollId' component={ PollPage }></Route>
     </Route>
   </Router>,
   document.getElementById('root')

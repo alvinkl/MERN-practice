@@ -10,4 +10,4 @@ const PollsSchema = new Schema({
 
 var Polls = mongoose.model('Polls', PollsSchema);
 
-module.exports = {Polls, PollsSchema};
+module.exports = { Polls, PollsSchema };

@@ -48,5 +48,28 @@ router.route('/')
       .catch(console.error);
 
   })
+  .put((req, res, next) => {
+    if (req.body.type == 1) {
+      Poll.update({
+        _id: req.body.postId,
+        "polls._id": req.body.id 
+      },
+      {
+        $inc: { "polls.$.count": 1 }
+      }, (err, poll) => {
+        if (err) return res.send(err);
+        res.send(poll);
+      });
+    }
+  })
+
+router.route('/:pollId')
+  .get((req, res, next) => {
+    Poll.findOne({ _id: req.params.pollId }, (err, poll) => {
+      if (err) return res.send(err);
+      res.json(poll);
+    })
+  })
+  
 
 module.exports = router;

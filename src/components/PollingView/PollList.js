@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router';
 
 // const data = [
 //   { id: 1, user: 'Bryan', title: 'Testing title', polls: [{ polling: 'pol1', count: 5 }]},
@@ -26,12 +27,12 @@ export default class PollList extends Component {
   }
 
   componentWillUnMount() {
-    clearInterval(this.state._loadData);
+    // clearInterval(this.state._loadData);
   }
 
   render() {
     let polling = this.state.data.map(item => {
-      return ( <a key={ item._id } className='btn-block' href=""><li key={ item._id } className="list-group-item text-center">{ item.title }</li></a> );
+      return ( <Link key={ item._id } className='btn-block' to={`pollPage/${item._id}`}><li key={ item._id } className="list-group-item text-center">{ item.title }</li></Link> );
     });
 
     return (
