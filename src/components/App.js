@@ -19,7 +19,8 @@ export default class App extends Component {
             </div>
             <ul className="nav navbar-nav navbar-right">
               <li><Link to="/">Home</Link></li>
-              <li><Link to="pollPage">My Polls</Link></li>
+              <li><a href="http://localhost:3100/auth/twitter" className="btn btn-default">Sign in Twitter</a></li>
+              {/*<li><Link to="pollPage">My Polls</Link></li>
               <li><Link to="newPoll">New Poll</Link></li>
               <li className="dropdown">
                 <a className="dropdown-toggle" data-toggle="dropdown" href="#">User
@@ -27,7 +28,7 @@ export default class App extends Component {
                 <ul className="dropdown-menu">
                   <li><a href="#" className="btn btn-default">Sign out</a></li>
                 </ul>
-              </li>
+              </li>*/}
             </ul>
           </div>
         </nav>

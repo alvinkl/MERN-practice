@@ -10,6 +10,11 @@ router.route('/')
       if (err) return res.send(err);
       res.json(polls);
     })
+    // res.send(req.isAuthenticated())
+    // if (req.isAuthenticated()) {
+    //   html += "<p>authenticated as user:</p>"
+    //   html += "<pre>" + JSON.stringify(req.user, null, 4) + "</pre>";
+    // }
   })
   .post((req, res) => {
     var poll = new Poll();
@@ -70,6 +75,6 @@ router.route('/:pollId')
       res.json(poll);
     })
   })
-  
+
 
 module.exports = router;
