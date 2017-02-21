@@ -7,9 +7,25 @@ export default class App extends Component {
   
   constructor(props) {
     super(props);
+    this.state = { authenticate: false };
   }
 
   render() {
+    let link = this.state.authenticate ? 
+                (<ul className="nav navbar-nav navbar-right">
+                  <li><Link to="pollPage">My Polls</Link></li>
+                  <li><Link to="newPoll">New Poll</Link></li>
+                  <li className="dropdown">
+                    <a className="dropdown-toggle" data-toggle="dropdown" href="#">User
+                    <span className="caret"></span></a>
+                    <ul className="dropdown-menu">
+                      <li><a href="#" className="btn btn-default">Sign out</a></li>
+                    </ul>
+                  </li>
+                </ul>)
+              :  (<ul className="nav navbar-nav navbar-right">
+                    <li><a href="http://localhost:3100/auth/twitter" className="btn btn-default">Sign in Twitter</a></li>
+                  </ul>)
     return (
       <div className="container">  
         <nav className="navbar navbar-default">
@@ -17,18 +33,9 @@ export default class App extends Component {
             <div className="navbar-header">
               <a className="navbar-brand" href="#">fcc-voting</a>
             </div>
+            { link }
             <ul className="nav navbar-nav navbar-right">
               <li><Link to="/">Home</Link></li>
-              <li><a href="http://localhost:3100/auth/twitter" className="btn btn-default">Sign in Twitter</a></li>
-              {/*<li><Link to="pollPage">My Polls</Link></li>
-              <li><Link to="newPoll">New Poll</Link></li>
-              <li className="dropdown">
-                <a className="dropdown-toggle" data-toggle="dropdown" href="#">User
-                <span className="caret"></span></a>
-                <ul className="dropdown-menu">
-                  <li><a href="#" className="btn btn-default">Sign out</a></li>
-                </ul>
-              </li>*/}
             </ul>
           </div>
         </nav>

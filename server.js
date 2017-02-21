@@ -49,19 +49,18 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-
   res.setHeader('Cache-Control', 'no-cache');
   next();
 });
 
-// we will call this to start the GitHub Login process
 app.get('/auth/twitter', passport.authenticate('twitter'));
 
-// GitHub will call this URL
-app.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/');
-  }
+app.get('/auth/twitter/callback', 
+        passport.authenticate('twitter', 
+        { 
+          successRedirect: '/api/auth',
+          failureRedirect: '/api'
+        })
 );
 
 app.use('/api', router);
