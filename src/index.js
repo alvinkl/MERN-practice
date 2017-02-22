@@ -20,11 +20,11 @@ const requireAuth = (nextState, replace) => {
 
 ReactDOM.render(
   <Router history={ hashHistory }>
-    <Route path='/' component={ App } >
+    <Route path='/' component={ App } auth={ auth } >
       <IndexRoute component={ Poll }></IndexRoute>
       <Route path='newPoll' component={ NewPoll } onEnter={ requireAuth } />
-      <Route path='pollPage/:pollId' component={ PollPage } onEnter={ requireAuth } />
-      <Route path='login' component={ Login } />
+      <Route path='pollPage/:pollId' component={ PollPage } />
+      <Route path='login' component={ () => (<Login auth={ auth }/>) } />
     </Route>
   </Router>,
   document.getElementById('root')

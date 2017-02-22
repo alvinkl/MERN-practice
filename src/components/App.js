@@ -7,31 +7,30 @@ export default class App extends Component {
   
   constructor(props) {
     super(props);
-    this.state = { authenticate: false };
+
+    this.auth = this.props.route.auth;
+    this.state = { loggedIn: this.auth.loggedIn() };
+
+    this.logout = this.logout.bind(this);
+  }
+
+  logout(e) {
+    e.preventDefault();
+    this.auth.logout();
+    this.setState({ loggedIn: this.auth.loggedIn() });
   }
 
   render() {
     let children = null;
-    if (this.props.children) {
-      children = React.cloneElement(this.props.children, {
-        auth: this.props.route.auth
-      })
-    }
 
-    let link = this.state.authenticate ? 
+    let link = this.state.loggedIn ? 
                 (<ul className="nav navbar-nav navbar-right">
                   <li><Link to="pollPage">My Polls</Link></li>
                   <li><Link to="newPoll">New Poll</Link></li>
-                  <li className="dropdown">
-                    <a className="dropdown-toggle" data-toggle="dropdown" href="#">User
-                    <span className="caret"></span></a>
-                    <ul className="dropdown-menu">
-                      <li><a href="#" className="btn btn-default">Sign out</a></li>
-                    </ul>
-                  </li>
+                  <li><a className="btn btn-danger" onClick={ this.logout }>Sign out</a></li>
                 </ul>)
               :  (<ul className="nav navbar-nav navbar-right">
-                    <li><a href="http://localhost:3100/auth/twitter" className="btn btn-default">Sign in Twitter</a></li>
+                    <li><a className="btn btn-default" onClick={ this.auth.login.bind(this) }>Login</a></li>
                   </ul>)
     return (
       <div className="container">  
