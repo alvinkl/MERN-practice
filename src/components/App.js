@@ -11,6 +11,13 @@ export default class App extends Component {
   }
 
   render() {
+    let children = null;
+    if (this.props.children) {
+      children = React.cloneElement(this.props.children, {
+        auth: this.props.route.auth
+      })
+    }
+
     let link = this.state.authenticate ? 
                 (<ul className="nav navbar-nav navbar-right">
                   <li><Link to="pollPage">My Polls</Link></li>
