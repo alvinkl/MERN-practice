@@ -6,7 +6,7 @@ import Chart from './Chart';
 export default class PollPage extends Component {
   constructor(params) {
     super(params);
-    this.URL = 'http://localhost:3100/api';
+    this.URL = 'http://localhost:3100/api/poll';
     this.params = params.params.pollId;
 
     this.state = { data: { polls: [] } };

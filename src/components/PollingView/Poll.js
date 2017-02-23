@@ -6,12 +6,15 @@ import PollList from './PollList';
 export default class Poll extends Component {
   constructor(props) {
     super(props);
+
     this.auth = this.props.route.auth;
-    this.state = { loggedIn: this.auth.loggedIn() };
+    let userId = this.auth.loggedIn() ? this.auth.getProfile().user_id : "";
+    this.state = { 
+      url: `` 
+    };
   }
 
   render() {
-    
     return (
       <div>
         <h1 className='text-center'><strong>fcc-voting</strong></h1>
@@ -19,7 +22,7 @@ export default class Poll extends Component {
         <h4 className='text-center'>Select a poll to see the results and vote, or <Link to="newPoll"><span> make a new poll!</span></Link> 
         </h4>
         <PollList 
-          url='http://localhost:3100/api/'
+          url="http://localhost:3100/api"
           pollInterval={2000} />
       </div>
     );

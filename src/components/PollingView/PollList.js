@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
 
-// const data = [
-//   { id: 1, user: 'Bryan', title: 'Testing title', polls: [{ polling: 'pol1', count: 5 }]},
-//   { id: 1, user: 'Test', title: 'Testing title', polls: [{ polling: 'pol2', count: 2 }]}
-// ]
-
 export default class PollList extends Component {
   constructor(props) {
     super(props);

@@ -7,6 +7,7 @@ import AuthService from '../build/AuthService';
 import App from './components/App';
 import Poll from './components/PollingView/Poll';
 import NewPoll from './components/NewPolling/NewPoll';
+import MyPoll from './components/myPoll/MyPoll';
 import PollPage from './components/PollPage/PollPage';
 import Login from './components/Login';
 
@@ -24,6 +25,7 @@ ReactDOM.render(
       <IndexRoute component={ Poll } auth={ auth }></IndexRoute>
       <Route path='newPoll' component={ NewPoll } onEnter={ requireAuth } auth={ auth }/>
       <Route path='pollPage/:pollId' component={ PollPage } />
+      <Route path='myPoll/:userId' component={ MyPoll } />
       <Route path='login' component={ () => (<Login auth={ auth }/>) } />
     </Route>
   </Router>,

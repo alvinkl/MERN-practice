@@ -4,6 +4,7 @@ const router = express.Router();
 const Poll = require('./model/Poll');
 const { Polls } = require('./model/Polls');
 
+
 router.route('/')
   .get((req, res, next) => {
     Poll.find((err, polls) => {
@@ -63,12 +64,21 @@ router.route('/')
     }
   })
 
-router.route('/:pollId')
+router.route('/:userId')
+  .get((req, res, next) => {
+    Poll.find({ user: req.params.userId }, (err, poll) => {
+      if (err) return res.send(err);
+      res.json(poll);
+    })
+  });
+
+router.route('/poll/:pollId')
   .get((req, res, next) => {
     Poll.findOne({ _id: req.params.pollId }, (err, poll) => {
       if (err) return res.send(err);
       res.json(poll);
     })
   })
+
 
 module.exports = router;

@@ -4,7 +4,6 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-// const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
@@ -17,32 +16,8 @@ const port = process.env.API_PORT || process.env.PORT;
 mongoose.connect("mongodb://admin:admin@ds139909.mlab.com:39909/mern-pr");
 mongoose.Promise = Promise;
 
-// require('./config/passport');
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(session({
-//   secret: 'mysupersecret',
-//   resave: false,
-//   saveUninitialized: false,
-//   store: new MongoStore({ mongooseConnection: mongoose.connection }),
-//   cookie: { maxAge: 180 * 60 * 1000 }
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// passport.serializeUser((user, done) => {
-//   // placeholder for custom user serialization
-//   // null is for errors
-//   done(null, user);
-// });
-
-// passport.deserializeUser((user, done) => {
-//   // placeholder for custom user deserialization.
-//   // maybe you are going to get the user from mongo by id?
-//   // null is for errors
-//   done(null, user);
-// });
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -52,16 +27,6 @@ app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-cache');
   next();
 });
-
-// app.get('/auth/twitter', passport.authenticate('twitter'));
-
-// app.get('/auth/twitter/callback', 
-//         passport.authenticate('twitter', 
-//         { 
-//           successRedirect: '/api/auth',
-//           failureRedirect: '/api'
-//         })
-// );
 
 app.use('/api', router);
 

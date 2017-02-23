@@ -25,7 +25,7 @@ export default class App extends Component {
 
     let link = this.state.loggedIn ? 
                 (<ul className="nav navbar-nav navbar-right">
-                  <li><Link to="pollPage">My Polls</Link></li>
+                  <li><Link to={`myPoll/${this.auth.getProfile().user_id}`}>My Polls</Link></li>
                   <li><Link to="newPoll">New Poll</Link></li>
                   <li><a className="btn btn-danger" onClick={ this.logout }>Sign out</a></li>
                 </ul>)
