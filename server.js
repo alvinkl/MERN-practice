@@ -13,7 +13,8 @@ const router = require('./router');
 const port = process.env.API_PORT || process.env.PORT;
 
 // mongoose.connect(process.env.MONGO_DB);
-mongoose.connect("mongodb://admin:admin@ds139909.mlab.com:39909/mern-pr");
+// mongoose.connect("mongodb://admin:admin@ds139909.mlab.com:39909/mern-pr");
+mongoose.connect('mongodb://admin:admin@ds013206.mlab.com:13206/fcc-votingapp');
 mongoose.Promise = Promise;
 
 app.use(bodyParser.urlencoded({ extended: true }));

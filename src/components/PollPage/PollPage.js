@@ -30,7 +30,7 @@ export default class PollPage extends Component {
     e.preventDefault();
     let selectedOption = this.refs.options.value;
     
-    axios.put(this.URL, {
+    axios.put('http://localhost:3100/api', {
       postId: this.state.data._id,
       id: selectedOption,
       type: 1
@@ -47,6 +47,8 @@ export default class PollPage extends Component {
       )
     });
 
+    let tweetText = `text=${ this.state.data.title} http://localhost:3000/#/pollPage/${this.params}`
+
     return (
       <div>
         <div className="row">
@@ -60,7 +62,7 @@ export default class PollPage extends Component {
             </div>
             <br/>
             <button className="btn-block btn btn-success" onClick={this.handleSubmit}>Submit</button>
-            <button className="btn-block btn btn-default">Share on Twitter</button>
+            <a className="btn-block btn btn-default" href={ `https://twitter.com/intent/tweet?${tweetText}` }>Tweet</a>
           </div>
           <div className="col-sm-6">
             <Chart data={ this.state.data }/>
