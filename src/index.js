@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
-import AuthService from '../config/AuthService';
+import AuthService from '../build/AuthService';
 
 import App from './components/App';
 import Poll from './components/PollingView/Poll';
@@ -21,8 +21,8 @@ const requireAuth = (nextState, replace) => {
 ReactDOM.render(
   <Router history={ hashHistory }>
     <Route path='/' component={ App } auth={ auth } >
-      <IndexRoute component={ Poll }></IndexRoute>
-      <Route path='newPoll' component={ NewPoll } onEnter={ requireAuth } />
+      <IndexRoute component={ Poll } auth={ auth }></IndexRoute>
+      <Route path='newPoll' component={ NewPoll } onEnter={ requireAuth } auth={ auth }/>
       <Route path='pollPage/:pollId' component={ PollPage } />
       <Route path='login' component={ () => (<Login auth={ auth }/>) } />
     </Route>

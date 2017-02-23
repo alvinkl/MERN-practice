@@ -1,5 +1,5 @@
 import React, { Component, PropTypes as T } from 'react';
-import AuthService from '../../config/AuthService';
+import AuthService from '../../build/AuthService';
 
 export default class Login extends Component {
   static propTypes = {
